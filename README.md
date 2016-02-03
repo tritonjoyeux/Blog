@@ -2,7 +2,7 @@
 Projet Blog
 
 Projet de 1e année de Sup'internet DEV
-En collaboration avec Joanne Huot
+<br>En collaboration avec Joanne Huot
 Chef de groupe Paul Jeandaux
 
 Date de debut 03/02/2016
