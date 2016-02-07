@@ -5,18 +5,21 @@
     <title>What-Sup</title>
     <link rel="stylesheet" type="text/css" href="style/index.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="script/js/scriptAccueil.js"></script>
+    <script src="script/js/scriptCreation.js"></script>
 </head>
 <body>
 <div id="blockConnection">
-    <form>
-        <span id="text_connection">Connection a What-Sup</span><br>
+    <form name="formCreation">
+        <span id="text_connection">Création d'un nouveau compte</span><br>
+        <input type="text" class="connec" name="prenom" placeholder="Prenom"><br>
+        <input type="text" class="connec" name="nom" placeholder="Nom"><br>
         <input type="text" class="connec" name="pseudo" placeholder="Pseudo"><br>
         <input type="password" class="connec" name="password" placeholder="Password"><br>
-        <input type="submit" name="connection" value="Connection" id="connecButton">
-
-        <a href="creationDeCompte.html">Créer un compte ?</a>
+        <input type="submit" name="creationCompte" value="Création">
     </form>
+    <a href="index.html">
+        <button id="buttonRetour">Retour</button>
+    </a>
     <div id="erreur"></div>
     <div id="bon"></div>
 </div>

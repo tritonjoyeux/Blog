@@ -1,9 +1,8 @@
 <?php
 session_start();
-require_once('../config/dbconf.php');
+require_once('../../config/dbconf.php');
 $message = [];
 if (isset($_POST['pseudo'])) {
-
     global $config;
     $pdo = new PDO($config['host'], $config['user'], $config['password']);
     $stmt = $pdo->prepare("SELECT * FROM `users` WHERE `nickname` = '" . $_POST['pseudo'] . "'");
@@ -14,7 +13,7 @@ if (isset($_POST['pseudo'])) {
         $message['etat'] = 'erreur';
     } else {
         $message['etat'] = 'connecte';
-        $_SESSION['pseudo']=$result['nickname'];
+        $_SESSION['pseudo'] = $result['nickname'];
     }
     echo json_encode($message);
 
