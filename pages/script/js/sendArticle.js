@@ -2,10 +2,11 @@ $(function () {
     $('form').submit(function () {
         var data = $(this).serialize();
         var erreur = $('#erreur');
-        var bon = $('#bon');
+        var storage = JSON.parse(localStorage.getItem('user'));
+        data+='&id='+storage.id;
 
         $.ajax({
-            url: 'script/php/creation.php',
+            url: 'script/php/creationArticle.php',
             type: 'POST',
             data: data,
             error: function (resultat, statut, erreur) {
@@ -15,12 +16,14 @@ $(function () {
                 data = JSON.parse(data);
                 if (data.etat == 'reussi') {
                     erreur.text('');
-                    bon.html('Creation reussie :<br> Redirection ...'
-                        + '<meta http-equiv="refresh" content="0.5; URL=index.html">'); //redirection a la page de connection
+                    $('#gestionArticle').val('New article');
+                    $('.creationArticle').hide(300);
+                    $('#allArticle').append('<h3>'+$('#title').val()+'</h3>' +
+                        $('#content').val()+'<br><br>');
+                    $('#title').val('');
+                    $('#content').val('');
                 } else if (data.etat == 'erreur') {
                     erreur.text('Erreur lors de la création.');     //erreur de la cr�ation de compte
-                } else if (data.etat == 'dejaExistant') {
-                    erreur.text('Pseudo deja pris.');               //erreur pseudo
                 } else if (data.etat == 'erreurChamp') {
                     erreur.text('Champ incomplet.');                //champ manquant
                 }

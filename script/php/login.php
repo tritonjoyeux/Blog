@@ -13,7 +13,10 @@ if (isset($_POST['pseudo'])) {
         $message['etat'] = 'erreur';
     } else {
         $message['etat'] = 'connecte';
-        $_SESSION['pseudo'] = $result['nickname'];
+        $message['user'] = $result['nickname'];
+        $message['droits'] = $result['droits'];
+        $message['id'] = $result['id_user'];
+        $message['firstname'] = $result['firstname'];
     }
     echo json_encode($message);
 
