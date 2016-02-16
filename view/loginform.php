@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,3 +22,11 @@
 </div>
 </body>
 </html>
+=======
+<?php
+class login{
+    public function login(){
+
+    }
+}
+>>>>>>> refs/remotes/origin/master
