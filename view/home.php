@@ -41,9 +41,6 @@
     <form class="userEdit">
         <input type="submit" value="Edit">
     </form>
-    <?php
-    var_dump($_SESSION);
-    ?>
 </div>
 <div class="edit">
 

@@ -30,14 +30,15 @@ class UserController extends AbstractController
 
     public function showAction()
     {
-    }
-
-    public function editAction()
-    {
         return json_encode(['message' => 'Edit profil',
             'pseudo' => $_SESSION['user'],
             'firstname' => $_SESSION['firstname'],
             'lastname' => $_SESSION['lastname']]);
+    }
+
+    public function editAction()
+    {
+
     }
 
     public function formAction()
