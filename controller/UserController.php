@@ -38,6 +38,7 @@ class UserController extends AbstractController
 
     public function editAction()
     {
+<<<<<<< HEAD
         if(empty($_POST['pseudo']) || empty($_POST['firstname']) || empty($_POST['lastname']))
             return json_encode(['error'=> 'Champ pas bon']);
         UserModel::editWithoutPassword($this->pdo,$_SESSION['pseudo'],$_SESSION['firstname'],$_SESSION['lastname']);
@@ -47,6 +48,9 @@ class UserController extends AbstractController
         if(sha1($_POST['passOld']) == $result($_POST['password']));
             return json_encode(['error' => 'Mdp pas bon']);
         UserModel::editWithPassword($this->pdo, $_POST['passNew']);
+=======
+
+>>>>>>> c24e73cda155d52624142ec0f1656aec21d41e21
     }
 
     public function formAction()
