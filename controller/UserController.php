@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 class UserController extends AbstractController
 {
     public function loginAction()
@@ -31,14 +30,23 @@ class UserController extends AbstractController
 
     public function showAction()
     {
-    }
-
-    public function editAction()
-    {
         return json_encode(['message' => 'Edit profil',
             'pseudo' => $_SESSION['user'],
             'firstname' => $_SESSION['firstname'],
             'lastname' => $_SESSION['lastname']]);
+    }
+
+    public function editAction()
+    {
+        if(empty($_POST['pseudo']) || empty($_POST['firstname']) || empty($_POST['lastname']))
+            return json_encode(['error'=> 'Champ pas bon']);
+        UserModel::editWithoutPassword($this->pdo,$_SESSION['pseudo'],$_SESSION['firstname'],$_SESSION['lastname']);
+        if(empty($_POST['passOld']) || empty($_POST['passNew']))
+            return json_encode(['message' => 'Champ modifiés']);
+        $result = LoginModel::login($this->pdo, $_POST['pseudo']);
+        if(sha1($_POST['passOld']) == $result($_POST['password']));
+            return json_encode(['error' => 'Mdp pas bon']);
+        UserModel::editWithPassword($this->pdo, $_POST['passNew']);
     }
 
     public function formAction()
@@ -47,21 +55,6 @@ class UserController extends AbstractController
 
     public function deleteAction()
     {
-=======
-class UserController{
-
-    public function formLoginAction(){
-        $view = include("../view/loginform.php");
-        return $view;
-    }
-
-    public function postLoginAction(){
-        if(isset($_POST['login'])){
-            return json_encode(true);
-        }else{
-            return json_encode(false);
-        }
->>>>>>> refs/remotes/origin/master
     }
 
 }

@@ -27,4 +27,5 @@ class ArticleModel{
     $article_id = $pdo->lastInsertId();
     return $article_id;
   }
+  
 }
