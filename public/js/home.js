@@ -26,6 +26,7 @@ $(function () {
     $(document).on('submit', '.userEdit', function (e) {
         $.post("/user/edit", $(this).serialize(), function (data) {
             if(data.message == 'Edit profil'){
+                $('.home').text('');
                 $('.edit').html('<form class="editNow">' +
                     '<input type="text" name="pseudo" value="'+data.pseudo+'"> Pseudo <br>'+
                     '<input type="text" name="firstname" value="'+data.firstname+'"> Prenom <br>'+
