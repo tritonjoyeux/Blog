@@ -5,16 +5,11 @@
     <title>WhatSup</title>
     <script src="../js/jquery-2.2.0.min.js"></script>
     <script src="../js/home.js"></script>
-    <style>
-        li {
-            list-style: none;
-        }
-    </style>
+    <link href="../style/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="home">
     Bonjour <?php echo $_SESSION['user']; ?>
-    <br>
     <br>
     <li>
         <?php foreach ($articles as $all): ?>
@@ -29,8 +24,8 @@
     </li>
     <br>
     <form class="article-add">
-        titre : <input type="name" name="article_title"><br>
-        contenu : <input type="name" name="article_content"><br>
+        titre : <input type="text" name="article_title"><br>
+        contenu : <input type="text" name="article_content"><br>
         <input type="submit" value="Add">
     </form>
     <br>
@@ -43,7 +38,14 @@
     </form>
 </div>
 <div class="edit">
-
+    <form class="editNow">
+        <input type="text" id="pseudo" name="pseudo" value=""> Pseudo <br>
+        <input type="text" name="firstname" id="firstname" value=""> Prenom <br>
+        <input type="text" name="lastname" id="lastname" value=""> Nom de famille <br>
+        <input type="password" name="passOld"> Ancien pass <br>
+        <input type="password" name="passNew"> New pass<br>
+        <input type="submit" value="Edit">
+    </form>
 </div>
 </body>
 </html>

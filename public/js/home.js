@@ -26,13 +26,20 @@ $(function () {
     $(document).on('submit', '.userEdit', function (e) {
         $.post("/user/show", $(this).serialize(), function (data) {
             if(data.message == 'Edit profil'){
-                $('.edit').html('<br><form class="editNow">' +
-                    '<input type="text" name="pseudo" value="'+data.pseudo+'"> Pseudo <br>'+
-                    '<input type="text" name="firstname" value="'+data.firstname+'"> Prenom <br>'+
-                    '<input type="text" name="lastname" value="'+data.pseudo+'"> Nom de famille <br>'+
-                    '<input type="text" name="passOld"> Ancien pass <br>'+
-                    '<input type="text" name="passNew"> New pass<br>'+
-                    '<input type="submit" value="Edit"></form>');
+                $('.edit').show();
+                $('#pseudo').val(data.pseudo);
+                $('#firstname').val(data.firstname);
+                $('#lastname').val(data.lastname);
+
+            }
+        }, 'json');
+        return false;
+    });
+
+    $(document).on('submit', '.editNow', function (e) {
+        $.post("/user/edit", $(this).serialize(), function (data) {
+            if(data.message == 'Champ modifies'){
+                $('.edit').hide();
             }
         }, 'json');
         return false;

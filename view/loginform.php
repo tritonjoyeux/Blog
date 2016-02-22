@@ -13,11 +13,10 @@
         <input type="text" class="connec" name="pseudo" placeholder="Pseudo"><br>
         <input type="password" class="connec" name="password" placeholder="Password"><br>
         <input type="submit" name="connection" value="Connection" id="connecButton">
-
-        <a href="#">Créer un compte ?</a>
     </form>
     <div id="erreur"></div>
     <div id="bon"></div>
+
 </div>
 </body>
 </html>

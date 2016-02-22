@@ -38,15 +38,30 @@ class UserController extends AbstractController
 
     public function editAction()
     {
+        if (empty($_POST['pseudo']) || empty($_POST['firstname']) || empty($_POST['lastname']))
+            return json_encode(['error' => 'Champ pas bon']);
+        UserModel::editWithoutPassword($this->pdo, $_POST['pseudo'], $_POST['firstname'], $_POST['lastname']);
+        $_SESSION['user'] = $_POST['pseudo'];
+        $_SESSION['firstname'] = $_POST['firstname'];
+        $_SESSION['lastname'] = $_POST['lastname'];
+        if (empty($_POST['passOld']) || empty($_POST['passNew']))
+            return json_encode(['message' => 'Champ modifies']);
+        $result = LoginModel::login($this->pdo, $_POST['pseudo']);
+        if (sha1($_POST['passOld']) != $result['password'])
+        return json_encode(['error' => 'Mdp pas bon']);
+        UserModel::editWithPassword($this->pdo, sha1($_POST['passNew']));
+        return json_encode(['error' => 'Champ modifies']);
 
-    }
-
-    public function formAction()
-    {
     }
 
     public function deleteAction()
     {
+    }
+
+    public function createAction()
+    {
+        //CHou verif champs plus appel model
+        //Quand tu appelle le model tu met le mdp en sha1 ($password=sha1($_POST['password'])
     }
 
 }
