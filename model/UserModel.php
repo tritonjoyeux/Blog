@@ -1,10 +1,14 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 class UserModel
 {
 
     public static function editWithPassword($pdo, $password)
     {
+<<<<<<< HEAD
         $q = $pdo->prepare("UPDATE `users` SET `password`='" . $password . "' WHERE `id_user`='" . $_SESSION['id_user'] . "'");
         $q->execute();
     }
@@ -23,4 +27,14 @@ class UserModel
             VALUES ('".$pseudo."',[value-2],[value-3],[value-4],date('Y-m-d'),'user')");
         $q->execute();*/
     }
+=======
+        $q = $pdo->prepare("UPDATE `users` SET `password`=".$password." WHERE `id_user`");
+        $q->execute();
+    }
+    public static function editWithoutPassword($pdo, $pseudo, $firstname, $lastname)
+    {
+        $q = $pdo->prepare("UPDATE `users` SET `nickname`=".$pseudo.",`firstname`=".$firstname.",`lastname`=".$lastname." WHERE `id_user`");
+        $q->execute();
+    }
+>>>>>>> origin/master
 }
