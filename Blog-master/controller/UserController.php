@@ -59,7 +59,6 @@ class UserController extends AbstractController
 
     public function createAction()
     {
-
         //CHou verif champs plus appel model
         //Quand tu appelle le model tu met le mdp en sha1 ($password=sha1($_POST['password'])
     }
