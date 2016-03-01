@@ -50,7 +50,8 @@ class ArticleModel
 
     public static function editArticle($pdo, $article_id, $article_content ,$article_title)
     {
-
+        $q = $pdo->prepare("UPDATE `article` SET `contenu`='".$article_content."',`title`='".$article_title."' WHERE `id_article`= '".$article_id."'");
+        $q->execute();
     }
 
 }

@@ -23,7 +23,17 @@ class ArticleController extends AbstractController
 
     public function updateAction()
     {
-        //JOANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNE
+        $article_id=$_POST['article_id'];
+        ArticleModel::getArticle($this->pdo,$article_id);
+        $result = ArticleModel::getArticle($this->pdo,$article_id);
+        if($_SESSION['id_user'] != $result['id_user'])
+            return json_encode(["error" => "utilisateur"]);
+
+        if(empty($_POST['article_title']) || empty($_POST['article_content']))
+            return json_encode(["error" => "champs"]);
+
+        ArticleModel::editArticle($this->pdo,$article_id,$_POST['article_title'],$_POST['article_content']);
+        return json_encode(['message' => 'update']);
     }
 
     public function deleteAction()
