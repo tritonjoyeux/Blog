@@ -25,11 +25,11 @@
 <form class="delete">
     <input type="submit" value="Supprimer">
 </form>
-<form class="profil" method="post">
-    <input type="submit" name="profil" value="Profil">
+<form class="accueil" method="post">
+    <input type="submit" value="Accueil">
 </form>
 <div class="article">
-    Bonjour <?php echo $_SESSION['user']; ?>
+    Connecter en tant que <?php echo $_SESSION['user']; ?>
     <br>
     <ul>
         <?php foreach ($articles as $all): ?>
@@ -38,8 +38,9 @@
                 <br>
                 Contenu : <?php echo $all['contenu'];
 
-                if($all['id_user'] == $_SESSION['id_user']){
-                    ?> <form class="article_delete">
+                if ($all['id_user'] == $_SESSION['id_user']) {
+                    ?>
+                    <form class="article_delete">
                     <input type="hidden" name="id_article" value="<?php echo $all['id_article'] ?>">
                     <input type="submit" value="Supprimer">
                     </form><?php

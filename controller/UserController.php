@@ -26,6 +26,8 @@ class UserController extends AbstractController
     {
         $_SESSION['user'] = '';
         $_SESSION['id_user'] = '';
+        $_SESSION['firstname'] = '';
+        $_SESSION['lastname'] = '';
     }
 
     public function showAction()
@@ -48,23 +50,53 @@ class UserController extends AbstractController
             return json_encode(['message' => 'Champ modifies']);
         $result = LoginModel::login($this->pdo, $_POST['pseudo']);
         if (sha1($_POST['passOld']) != $result['password'])
-        return json_encode(['error' => 'Mdp pas bon']);
+            return json_encode(['error' => 'Mdp pas bon']);
         UserModel::editWithPassword($this->pdo, sha1($_POST['passNew']));
         return json_encode(['error' => 'Champ modifies']);
     }
 
     public function deleteAction()
     {
+        UserModel::deleteUser($this->pdo);
+        $_SESSION['user'] = '';
+        $_SESSION['id_user'] = '';
+        $_SESSION['firstname'] = '';
+        $_SESSION['lastname'] = '';
+        return json_encode(['message' => 'delete']);
     }
 
     public function createAction()
     {
-<<<<<<< HEAD
+        if (empty($_POST['pseudo'])) {
+            $erreur['pseudo'] = 'Veuillez entrer un pseudo';
+        } else if (strlen($_POST['pseudo']) < 7) {
+            $erreur['pseudo'] = 'Votre pseudo est trop court';
+        }
 
-=======
->>>>>>> e7a4e70ced02856d4cba339ea7e5f10f24056667
-        //CHou verif champs plus appel model
-        //Quand tu appelle le model tu met le mdp en sha1 ($password=sha1($_POST['password'])
+        if (empty($_POST['firstname']))
+            $erreur['firstname'] = 'Veuillez entrer un prenom';
+
+        if (empty($_POST['lastname']))
+            $erreur['lastname'] = 'Veuillez entrer un nom de famille';
+
+        if (empty($_POST['password']) || empty($_POST['password2']) || strlen($_POST['password']) < 6) {
+            $erreur['password'] = 'Veuillez entrer un mot de passe d\'au moins 6 caracteres et le confimer';
+        } else if ($_POST['password'] != $_POST['password2']) {
+            $erreur['password'] = 'Entrez les meme mots de passe';
+        }
+
+        if (!empty($erreur)) {
+            $erreur['error'] = 'champs';
+            return json_encode($erreur);
+        }
+
+        $result = LoginModel::login($this->pdo, $_POST['pseudo']);
+        if ($result != false) {
+            $erreur['error'] = 'pris';
+            return json_encode($erreur);
+        }
+        UserModel::createUser($this->pdo, $_POST['pseudo'], $_POST['firstname'], $_POST['lastname'], sha1($_POST['password']));
+        return json_encode(['success' => 'created']);
     }
 
 }

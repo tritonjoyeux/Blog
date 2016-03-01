@@ -14,9 +14,11 @@
         <input type="password" class="connec" name="password" placeholder="Password"><br>
         <input type="submit" name="connection" value="Connection" id="connecButton">
     </form>
+    <form method="post">
+        <input type="submit" name="accountCreate" value="Créer">
+    </form>
     <div id="erreur"></div>
     <div id="bon"></div>
-
 </div>
 </body>
 </html>
