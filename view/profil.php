@@ -34,9 +34,10 @@
     <br>
     <ul>
         <?php foreach ($articles as $all): ?>
-            <li class="article">
-                <form class="article_edit" id="<?php echo $all['id_article'] ?>">
-                    Titre : <span class="edit_title_<?php echo $all['id_article'] ?>"><?php echo $all['title']; ?></span>
+            <li class="article" id="article-<?php echo $all['id_article'] ?>">
+                <form class="article_edit">
+                    Titre : <span
+                        class="edit_title_<?php echo $all['id_article'] ?>"><?php echo $all['title']; ?></span>
                     <br>
                     Contenu : <span class="edit_content_<?php echo $all['id_article'] ?>"><?php echo $all['contenu'];
                         ?></span><?php
@@ -48,7 +49,8 @@
                     <br>
                     <input type="submit" class="editAction editAction_<?php echo $all['id_article'] ?>" value="Edit">
                 </form>
-                <input type="button" value="Edit" class="editButton editButton_<?php echo $all['id_article'] ?>" id="<?php echo $all['id_article'] ?>">
+                <input type="button" value="Edit" class="editButton editButton_<?php echo $all['id_article'] ?>"
+                       id="<?php echo $all['id_article'] ?>">
 
 
                 <form class="article_delete">

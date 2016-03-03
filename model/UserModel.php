@@ -27,6 +27,12 @@ class UserModel
     {
         $q = $pdo->prepare("DELETE FROM `users` WHERE `id_user`='".$_SESSION['id_user']."'");
         $q->execute();
+
+        $q = $pdo->prepare("DELETE FROM `article` WHERE `id_user`='".$_SESSION['id_user']."'");
+        $q->execute();
+
+        $q = $pdo->prepare("DELETE FROM `commentaires` WHERE `id_user`='".$_SESSION['id_user']."'");
+        $q->execute();
     }
 
 }
