@@ -8,9 +8,12 @@ class IndexController extends AbstractController
         if ($_SESSION['user'] != '') {
             if(isset($_POST['profil'])){
                 $articles = ArticleModel::getListOfUser($this->pdo);
+                $users = UserModel::getAllUsers($this->pdo);
+
                 include("../view/profil.php");
             }else {
                 $articles = ArticleModel::getList($this->pdo);
+                $users = UserModel::getAllUsers($this->pdo);
                 include("../view/home.php");
             }
         } else {

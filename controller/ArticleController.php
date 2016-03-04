@@ -17,6 +17,7 @@ class ArticleController extends AbstractController
             "article_id" => $article_id,
             "article_title" => $article_title,
             "article_content" => $article_content,
+            "auteur" => $_SESSION['user']
         ]);
 
     }

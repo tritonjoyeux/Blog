@@ -35,4 +35,14 @@ class UserModel
         $q->execute();
     }
 
+    public static function getAllUsers($pdo)
+    {
+        $res = $pdo->query("SELECT * FROM users");
+        $users = [];
+        foreach ($res as $row) {
+            $users[] = $row;
+        }
+        return $users;
+    }
+
 }

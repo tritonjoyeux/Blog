@@ -45,6 +45,7 @@ $(function () {
                     '<form class="article_edit">' +
                     ' Titre : <span class="edit_title_' + data.article_id + '">' + data.article_title + '</span><br>' +
                     ' Contenu : <span class="edit_content_' + data.article_id + '">' + data.article_content + '</span><br>' +
+                    ' Auteur : <span class="auteur">' +data.auteur+'</span><br>'+
                     '<input type="hidden" name="id_article" value="' + data.article_id + '">' +
                     '<input type="submit" class="editAction editAction_' + data.article_id + '" value="Edit" style="display: none;"></form>' +
                     '<input type="button" value="Edit" class="editButton editButton_' + data.article_id + '" id="' + data.article_id + '">' +

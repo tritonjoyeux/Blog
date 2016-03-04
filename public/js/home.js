@@ -41,9 +41,4 @@ $(function () {
         }, 'json');
         return false;
     });
-
-    $('#ajouterArticle').click(function(){
-       $('.addArticleContainer').fadeIn(500);
-    });
-
 });
