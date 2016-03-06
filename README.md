@@ -14,7 +14,7 @@ Pour connexion a la bdd -> créé un fichier "dbconf.php" dans un dossier "confi
 <br>
 <?php 
 <br>$config=[
-<br>"host" => "mysql:host=127.0.0.1;dbname='entrez le la bdd'",
+<br>"host" => "mysql:host=127.0.0.1;dbname='entrez le nom la bdd'",
 <br>"user" => "nom de compte bdd",
 <br>"password" => "mot de passe bdd",
 <br>];
