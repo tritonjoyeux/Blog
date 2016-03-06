@@ -18,3 +18,5 @@ Pour connexion a la bdd -> créé un fichier "dbconf.php" dans un dossier "confi
 <br>"user" => "nom de compte bdd",
 <br>"password" => "mot de passe bdd",
 <br>];
+<br><br>
+Fair pointer le vhost sur le fichier "public" avec pour DirectoryIndex "index.php"
